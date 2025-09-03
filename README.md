@@ -1,0 +1,1 @@
+This repository has scripts to generate fdTMS coils that sit on supports discretized by triangle meshes. To get started modify the tutorial762020. that is currently set up to design coils on a flat triangle mesh.
