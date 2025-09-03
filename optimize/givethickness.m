@@ -1,0 +1,15 @@
+function [rs1,rs2,rs3,rs4]=givethickness(wireth,wirehe,tan,nhat,rs);
+rs1=rs;rs2=rs;
+rs1(:,1)=rs1(:,1)-wireth.*tan(:,1)/2;
+rs1(:,2)=rs1(:,2)-wireth.*tan(:,2)/2;
+rs1(:,3)=rs1(:,3)-wireth.*tan(:,3)/2;
+rs2(:,1)=rs2(:,1)+wireth.*tan(:,1)/2;
+rs2(:,2)=rs2(:,2)+wireth.*tan(:,2)/2;
+rs2(:,3)=rs2(:,3)+wireth.*tan(:,3)/2;
+rs3=rs1;rs4=rs2;
+rs3(:,1)=rs3(:,1)+wirehe.*nhat(:,1);
+rs3(:,2)=rs3(:,2)+wirehe.*nhat(:,2);
+rs3(:,3)=rs3(:,3)+wirehe.*nhat(:,3);
+rs4(:,1)=rs4(:,1)+wirehe.*nhat(:,1);
+rs4(:,2)=rs4(:,2)+wirehe.*nhat(:,2);
+rs4(:,3)=rs4(:,3)+wirehe.*nhat(:,3);
