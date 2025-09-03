@@ -1,0 +1,30 @@
+function [rs1,rs2,rs3,rs4,rs]=converttowire(rs,wireth,wirehe,nx,ny,nz,xh,yh)
+rs=rs(:,1:3);
+wireth=(wireth(2:end)+wireth(1:end-1))/2;
+drs=rs(2:end,1:3)-rs(1:end-1,1:3);
+rs1=(rs(2:end,:)+rs(1:end-1,:))/2;
+rs2=(rs(2:end,:)+rs(1:end-1,:))/2;
+nh=1./sqrt(sum(drs.^2,2));
+drs(:,1)=drs(:,1).*nh;
+drs(:,2)=drs(:,2).*nh;
+drs(:,3)=drs(:,3).*nh;
+clear nhat
+nhat(:,1)=nx((xh(2:end)+xh(1:end-1))/2,(yh(2:end)+yh(1:end-1))/2);
+nhat(:,2)=ny((xh(2:end)+xh(1:end-1))/2,(yh(2:end)+yh(1:end-1))/2);
+nhat(:,3)=nz((xh(2:end)+xh(1:end-1))/2,(yh(2:end)+yh(1:end-1))/2);
+tan=cross(drs,nhat);
+nh=1./sqrt(sum(tan.^2,2));
+tan(:,1)=tan(:,1).*nh;
+tan(:,2)=tan(:,2).*nh;
+tan(:,3)=tan(:,3).*nh;
+rs=rs1+wirehe*nhat/2;
+rs1(:,1)=rs1(:,1)-wireth.*tan(:,1)/2;
+rs1(:,2)=rs1(:,2)-wireth.*tan(:,2)/2;
+rs1(:,3)=rs1(:,3)-wireth.*tan(:,3)/2;
+rs2(:,1)=rs2(:,1)+wireth.*tan(:,1)/2;
+rs2(:,2)=rs2(:,2)+wireth.*tan(:,2)/2;
+rs2(:,3)=rs2(:,3)+wireth.*tan(:,3)/2;
+rs3=rs1;rs4=rs2;
+rs3=rs3+wirehe*nhat;
+rs4=rs4+wirehe*nhat;
+rs=rs+wirehe*nhat/2;
