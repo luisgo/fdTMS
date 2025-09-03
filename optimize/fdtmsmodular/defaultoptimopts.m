@@ -1,0 +1,26 @@
+function options=defaultoptimopts()
+options=optimoptions('intlinprog');
+options.AbsoluteGapTolerance= 0;
+options.BranchRule= 'maxpscost';
+options.ConstraintTolerance= 1.0000e-04;
+options.CutGeneration= 'advanced';
+ options.CutMaxIterations= 25;
+options.Display= 'iter';
+options.Heuristics= 'rins-diving';
+options.HeuristicsMaxNodes= 500;
+options.IntegerPreprocess= 'advanced';
+options.IntegerTolerance= 1.0000e-05;
+options.LPMaxIterations= 10^6;
+options.LPOptimalityTolerance= 1.0000e-07;
+options.MaxFeasiblePoints= Inf;
+ options.MaxNodes= 10000000000;
+ options.MaxTime= 6*7200;
+options.NodeSelection= 'simplebestproj';
+options.ObjectiveCutOff= Inf;
+options.ObjectiveImprovementThreshold= 1.0000e-04;
+options.OutputFcn= [];
+options.PlotFcn= [];
+options.RelativeGapTolerance= 1.0000e-04;
+options.RootLPAlgorithm= 'dual-simplex';
+ options.RootLPMaxIterations=10^6; 
+end
